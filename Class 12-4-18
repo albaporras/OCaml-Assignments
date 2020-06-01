@@ -1,0 +1,91 @@
+función con función de parámetro
+
+let <name> (<input>; <type1>) (<input2>; >type2>)... : <expression>
+[map]
+let rec map (f: int-> int) (w: int list) : int list = #tambien se puede poner rec map f w
+match w with
+|[] -> [] 
+|head :: tail -> f head :: map f tail;;
+
+string_of_intt 73 = "73";
+
+let add n: int :int= n+1;
+
+let := sirve para darle un nombre a las cosas;
+
+let x := no es una variable, es un 'identificador';
+
+let output_w (x:'a) : int list = [1;2];;
+	output_w 6;; # el output es int list = [1;2];
+
+= no es igual a ==.
+	== sirve para comparar funciones también, no solo variables;
+
+las constantes también se definen := let <name> (<input>; <type1>) (<input2>; >type2>)... : <expression>;
+
+el bool '<' no es solo para int, compara tipos genéricos;
+
+type alien = |0 | S of alien;;
+	S ( S 0) = S 0;; #output alien = S 0 ; Probar con 0 o con o;
+
+let f (n: int) : int = t;;
+f 1;; #output int = 5;
+
+una funcion que recibe un string y el output es un int: a esto se le llama function defects;
+
+local names/identifiers para la función (así no se te acaban los nombres que ponerles en códigos largos);
+let f (n : int) : string = 
+(string_of_int n) ^ "!";;
+let f (n : int) : string =
+let strofint = string_of_int n in
+strofint ^ "!";;
+#puedes usarlo varias veces : strofint ^ "!" ^ strofint;;
+
+let a = 1 in
+let b = 2 in 
+a+b;; #el input es 3, pero si pones a en otro comando, ocaml no sabe lo que es porque es una variable local;
+
+x=4;;
+x + (let x = 1 in x + x) + x;; #el output es 10 porque las x del paréntesis son locales;
+
+let rec total (w:int list) : int=
+match w with
+|[] -> 0
+|hd:: tl -> hd + (total tl)
+#output de [1;2;3;4] -> 1 + (total [2;3;4;])
+-> 1+ (2+(total[4]))
+...
+->10;
+
+let total_tr (w: int list) : int =
+let rec iter (l : int list) (running_total: int) : int = 
+match l with
+|[] -> running_total
+|hd:: tl -> iter tl (hd + running_total)
+in
+iter w 0;;
+#running_total acumulador, se utiliza una función auxiliar para acumular;
+
+[reverse]
+let reverse (w: 'a list) : 'a list =
+	let rec iter (l1: 'a list) (l2 :'a list): 'a list =
+	match l1 with
+	|[] -> l2
+	| hd::tl -> iter tl (hd::l2)
+	in 
+iter w [];;
+
+let rmap (w: 'a list) (s: int->int): 'a list =
+	let rec iter (l1: 'a list) (l2 :'a list): 'a list =
+	match l1 with
+	|[] -> l2
+	| hd::tl -> iter tl (s hd::l2)
+in 
+iter (reverse w) [];;
+
+función anónima: fun (<name>; <type>) : <type> -> <expr>;
+fun (n : int) : int -> n+1;
+#poner el nombre de la función antes: map#ie(fun (<name>; <type>) : <type> -> <expr>)
+
+
+

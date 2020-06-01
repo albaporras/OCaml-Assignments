@@ -1,0 +1,49 @@
+funcion replace:
+let rec replace (x : var) (value : bool) (phi : formula) : formula =
+match phi with
+|Var s -> if (s=x) then if value then Neg Bot else Bot else Var s
+|Bot -> Bot
+|Neg psi -> Neg (replace x value psi)
+|And (p,q) -> And((replace x value p),(replace x value q)) ;; 
+
+Si pones (símbolos) de nombre a la función, puede pillar solo una parte de, x ejemplo, la formula
+
+let (&&&) (phi: formula) (psi:formula) : formula =
+	And (phi, psi);;
+let (|||) (phi:formula) ( psi:formula) : formula =
+	Neg (Neg phi &&& Neg psi);;
+let (-->) (phi:formula) (psi:formula) :formula =
+	Neg (phi &&& Neg psi);;
+
+let (<->) (phi:formula) (psi: formula) : formula =
+	(phi--> psi) &&& (psi --> phi)
+
+interfaces y modulos
+ocamlc -c variable.ml
+interfaz: mli solo das el valor y la definicion
+ocamldoc -html variable.mli
+
+en el ml puedes poner funciones que no pondras en mli si, por ejemplo, haces un fichero de variables y está la funcion delete_duplicates.
+
+type formula =
+  | Bot
+  | Var of var (Se pone Var of Variable.var )
+  | Neg of formula
+  | And of formula * formula
+
+INTERFACCES	IMPLEMENTATION	MODULE 2
+A		A		Module 1.A (bien)
+B		B		Module 1.c (mal)
+		C		
+
+#mod_use "variable.ml" ;; (*el output es diferente que poniendo #use *)
+module Variables :
+sig
+type var = string
+val string_of_var : var -> var
+val eq: var -> var -> bool
+val example: int
+end
+
+compila y print la interface
+

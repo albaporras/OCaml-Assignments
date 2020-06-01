@@ -1,0 +1,24 @@
+For this week:
+
+1. Do 8 of the exercises I sent previously, replacing aliens by ints and queues by lists. Note that some functions can use polymorphic lists, while others assume int lists; (The idea is to do the ones you did last week, so as to not overwhelm you; however, feel free to do whichever)
+
+2. Do also the following exercises:
+
+    a. Write a function last : 'a list -> 'a option that returns the last element of a list. 
+    b. Find the k'th element of a list.
+    c. Split a list into two parts; the length of the first part is given. If the length of the first part is longer than the entire list, then the first part is the list and the second part is empty.
+
+3. Write them in a text file with extension .ml (or in jupyter);
+
+4. Use OCaml to run your file (type #use "name_of_file.ml");
+
+5. Fix any errors and warnings you might have;
+
+6. Play with your functions and try to find mistakes in your definitions;
+
+7. Send me the .ml file (or, if you have it, the jupyter notebook) until next class.
+
+Any problems, feel free to ask.
+
+Happy coding!
+Ana
