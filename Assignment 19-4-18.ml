@@ -23,5 +23,16 @@ match l with
 in
 iter q;;
 
+let rec fact (x:int) : int =
+match x with
+|0 -> 1 
+|n -> n * fact(n-1);;
 
+let factorial (n:int) : int =
+let rec iter (s:int) (r:int) : int=
+match s with
+|0 -> 1
+|k->iter (s+1) (r*(s+1))
+in 
+iter 0 1;;
 
