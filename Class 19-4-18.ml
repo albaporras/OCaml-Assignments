@@ -16,7 +16,7 @@ let rec string_of_formula (phi : formula) : string =
   | And (psi1, psi2) -> "(" ^ (string_of_formula psi1) ^ " & " ^ (string_of_formula psi2) ^ ")"
 
 
-(*let rec is_tauto (phi : formula) : bool =
+let rec is_tauto (phi : formula) : bool =
   let variables : var list = get_variables phi in
   match variables with
   | [] -> eval phi
@@ -28,4 +28,4 @@ let rec replace (x : var) (value : bool) (phi : formula) : formula
 
 let rec get_variables (phi : formula) : var list
 
-let rec eval (phi : formula (* without variables *)) : bool*)
+let rec eval (phi : formula (* without variables *)) : bool
